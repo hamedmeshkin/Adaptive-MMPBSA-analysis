@@ -1,0 +1,27 @@
+#!/bin/bash
+#PBS -l nodes=4:ppn=16,walltime=00:01:00:00
+#PBS -l gres=ccm
+#PBS -r n
+#PBS -o $PBS_JOBID.o
+#PBS -e $PBS_JOBID.e
+#PBS -N sigma_rmsd_31
+#PBS -V
+#PBS -q debug_gpu
+
+module load ccm
+module load pcp/2008
+export LD_LIBRARY_PATH=/N/u/smeshkin/BigRed2/vmd_cuda/lib:$LD_LIBRARY_PATH
+
+jobname=run
+logfile=${jobname}.log
+
+cd $PBS_O_WORKDIR
+
+# if [ -e $logfile ]; then
+#    echo Log file already exists!
+#    exit
+# fi
+
+aprun -n 59 pcp ${jobname}.sh 
+
+# pcp ${jobname}.sh 
