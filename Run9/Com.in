@@ -1,0 +1,32 @@
+parmbox nobox
+parmbox x 70.937 y 70.937 z 120.25 alpha 90 beta 90 gamma 120
+parminfo
+box x 70.937 y 70.937 z 120.25 alpha 90 beta 90 gamma 120
+strip :WAT
+strip :Na+
+strip :Cl-
+autoimage :84,894,492,390,288,186@CA
+align :1-612@CA
+trajout  traj/complex.1.dcd start 8400 stop 8449 offset 2
+trajout  traj/complex.2.dcd start 8450 stop 8499 offset 2
+trajout  traj/complex.3.dcd start 8500 stop 8549 offset 2
+trajout  traj/complex.4.dcd start 8550 stop 8599 offset 2
+trajout  traj/complex.5.dcd start 8600 stop 8649 offset 2
+trajout  traj/complex.6.dcd start 8650 stop 8699 offset 2
+trajout  traj/complex.7.dcd start 8700 stop 8749 offset 2
+trajout  traj/complex.8.dcd start 8750 stop 8799 offset 2
+trajout  traj/complex.9.dcd start 8800 stop 8849 offset 2
+trajout  traj/complex.10.dcd start 8850 stop 8899 offset 2
+trajout  traj/complex.11.dcd start 8900 stop 8949 offset 2
+trajout  traj/complex.12.dcd start 8950 stop 8999 offset 2
+trajout  traj/complex.13.dcd start 9000 stop 9049 offset 2
+trajout  traj/complex.14.dcd start 9050 stop 9099 offset 2
+trajout  traj/complex.15.dcd start 9100 stop 9149 offset 2
+trajout  traj/complex.16.dcd start 9150 stop 9199 offset 2
+trajout  traj/complex.17.dcd start 9200 stop 9249 offset 2
+trajout  traj/complex.18.dcd start 9250 stop 9299 offset 2
+trajout  traj/complex.19.dcd start 9300 stop 9349 offset 2
+trajout  traj/complex.20.dcd start 9350 stop 9399 offset 2
+trajout  traj/complex.21.dcd start 9400 stop 9449 offset 2
+go
+parmwrite out hexmolsol.prmtop

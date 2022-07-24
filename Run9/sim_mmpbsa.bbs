@@ -1,0 +1,43 @@
+#!/bin/bash
+
+#SBATCH -J mol9
+#SBATCH -o e.o/R%J.o
+#SBATCH -e e.o/R%J.e
+#SBATCH --nodes=1
+##SBATCH --cpus-per-task=2
+#SBATCH --cores-per-socket=32
+#SBATCH --threads-per-core=1
+#SBATCH --sockets-per-node=2
+#SBATCH --time=72:00:00
+#SBATCH --partition idle
+#SBATCH --account=biophysics
+##SBATCH --gres=gpu:1
+#SBATCH --mem=128GB
+#SBATCH --exclusive
+
+
+source ~/.conda/envs/Lab/amber.sh
+source ~/.conda_odd/envs/Amber/amber.sh
+source ~/.conda/envs/Lab/amber.sh
+cpptraj -p ../../common/hexmol.prmtop -y ../../prod/complex.dcd -i Com.in
+
+export LD_LIBRARY_PATH=~/APBS/lib
+vpkg_require python
+vpkg_require gcc/10.1
+#vpkg_require python-mpi
+vpkg_require vmd
+#source active Lab
+#source ~/.conda/envs/Amber/amber.sh
+
+
+env | grep SLURM_JOB
+export UD_MACHINE_FILE_FORMAT='%h%[:]C'
+echo "Machine file: " 
+echo \${SLURM_NTASKS}
+
+mkdir mmpbsa
+echo "Started Production on `date` "
+
+#Define
+
+python3.8 para.py
